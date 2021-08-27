@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pag"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <com.example.myapplication.Views.BottomLineLayout
+        android:id="@+id/botton_lin"
+        android:layout_gravity="bottom|center"
+        android:gravity="center"
+        android:layout_marginBottom="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/next_tex"
+        android:background="@android:color/black"
+        android:padding="10dp"
+        android:textColor="@android:color/white"
+        android:layout_gravity="right"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:text="进入首页"
+        android:visibility="gone"
+        />
+
+</FrameLayout>
