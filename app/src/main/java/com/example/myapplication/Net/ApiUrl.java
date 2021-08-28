@@ -1,5 +1,7 @@
 package com.example.myapplication.Net;
 
+import com.example.myapplication.Bean.NewsBean;
+
 import java.util.List;
 import java.util.Map;
 
@@ -121,4 +123,18 @@ public interface ApiUrl {
     @Streaming
     @GET
     Observable<ResponseBody> download(@Header("RANGE") String start, @Url String url);
+
+    //新闻  //type=&page=&page_size=&is_filter=&key=3c16f6e0a13a33dccbc84179e0a0f695
+    @GET("toutiao/index")
+    Observable<BaseResponse<NewsBean>> getNews(@Query("type")String type,
+                                 @Query("page")int page,
+                                 @Query("page_size")int page_size,
+                                 @Query("is_filter")int is_filter,
+                                 @Query("key")String key) ;
+
+
+//    //新闻  //type=&page=&page_size=&is_filter=&key=3c16f6e0a13a33dccbc84179e0a0f695
+//    @GET("toutiao/index")
+//    Observable<NewsBean> getNews() ;
+
 }

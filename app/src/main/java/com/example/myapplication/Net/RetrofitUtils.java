@@ -3,7 +3,6 @@ package com.example.myapplication.Net;
 
 import androidx.annotation.NonNull;
 
-import com.example.myapplication.BuildConfig;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import java.util.concurrent.TimeUnit;
@@ -58,37 +57,16 @@ public class RetrofitUtils {
      */
     @NonNull
     private OkHttpClient initOkHttp() {
-        // 添加日志拦截器
-        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
-        //设置日志Level
-        if (BuildConfig.DEBUG) {
-            // development build
-            loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        } else {
-            // production build
-            loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
-        }
-
-        LogInterceptor logging = new LogInterceptor(new Logger());
-        logging.setLevel(LogInterceptor.Level.BODY);
-
-
-
-
-//        HttpHeaderInterceptor httpHeaderInterceptor = new HttpHeaderInterceptor.Builder().build();
-        //日志拦截
-//        builder.addInterceptor(loggingInterceptor);
-
+        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         return new OkHttpClient().newBuilder()
                     .readTimeout(Constans.DEFAULT_TIME, TimeUnit.SECONDS)//设置读取超时时间
                     .connectTimeout(Constans.DEFAULT_TIME, TimeUnit.SECONDS)//设置请求超时时间
                     .writeTimeout(Constans.DEFAULT_TIME, TimeUnit.SECONDS)//设置写入超时时间
-                    .addInterceptor(loggingInterceptor)//添加打印拦截器
+                    .addInterceptor(logging)//添加打印拦截器
                     .retryOnConnectionFailure(true)//设置出现错误进行重新连接。
                     .build();
-
-//        .addInterceptor(new LogInterceptor())//添加打印拦截器
     }
 }
 

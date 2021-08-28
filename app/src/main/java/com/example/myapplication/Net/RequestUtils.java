@@ -2,6 +2,8 @@ package com.example.myapplication.Net;
 
 import android.content.Context;
 
+import com.example.myapplication.Bean.NewsBean;
+
 import java.io.File;
 import java.util.HashMap;
 import java.util.List;
@@ -16,6 +18,13 @@ import okhttp3.RequestBody;
  * 提交参数方式
  */
 public class RequestUtils {
+
+    public static void getNews(Context context, MyObserver<NewsBean> observer){
+        RetrofitUtils.getApiUrl().getNews("top",1,20,
+                1,"3c16f6e0a13a33dccbc84179e0a0f695")
+                .compose(RxHelper.observableIO2Main(context))
+                .subscribe(observer);
+    }
 
     /**
      * Get 请求demo

@@ -56,7 +56,8 @@ public class MainActivity extends BaseActivity implements MvpView {
         switch (view.getId()) {
             case R.id.data_but:
 //                presenter.getData("normal_circle", true);
-                PubAct.startAct(MainActivity.this,new SettingFrag());
+//                PubAct.startAct(MainActivity.this,new SettingFrag());
+                presenter.getNews();
                 break;
             case R.id.failure_but:
 //                presenter.getData("failure", true);

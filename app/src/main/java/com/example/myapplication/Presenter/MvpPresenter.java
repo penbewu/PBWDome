@@ -114,6 +114,33 @@ public class MvpPresenter implements Presenter <MvpView>{
 
     }
 
+    public void getNews(){
+        if (!isViewAttached())
+            return;
+
+        MvpModel.getNews(mView.getContext(), "", new MvpCallback() {
+            @Override
+            public void onSuccess(Object data) {
+                mView.showData(data);
+            }
+
+            @Override
+            public void onFailure(String msg) {
+            }
+
+            @Override
+            public void onError() {
+            }
+
+            @Override
+            public void onComplete() {
+            }
+        });
+
+    }
+
+
+
     @Override
     public void attachView(MvpView view) {
         this.mView =view;

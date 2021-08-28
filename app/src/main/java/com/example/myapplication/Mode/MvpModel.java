@@ -3,6 +3,7 @@ package com.example.myapplication.Mode;
 import android.content.Context;
 import android.os.Handler;
 
+import com.example.myapplication.Bean.NewsBean;
 import com.example.myapplication.Net.Demo;
 import com.example.myapplication.Net.MyObserver;
 import com.example.myapplication.Net.RequestUtils;
@@ -50,5 +51,19 @@ public class MvpModel {
             }
         };
         RequestUtils.getDemo(context,myObserver);
+    }
+
+    public static void getNews(Context context, final String param , final MvpCallback callback){
+        MyObserver myObserver = new MyObserver<NewsBean>(context) {
+            @Override
+            public void onSuccess(NewsBean result) {
+                callback.onSuccess(result);
+            }
+            @Override
+            public void onFailure(Throwable e, String errorMsg) {
+                callback.onFailure(errorMsg);
+            }
+        };
+        RequestUtils.getNews(context,myObserver);
     }
 }
